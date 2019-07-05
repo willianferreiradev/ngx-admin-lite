@@ -15,26 +15,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any;
-
-  themes = [
-    {
-      value: 'default',
-      name: 'Light',
-    },
-    {
-      value: 'dark',
-      name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    },
-  ];
+  user = {
+    name: 'Your Name',
+    picture: `https://i0.wp.com/www.winhelponline.com/blog/w
+    p-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1`,
+  };
 
   currentTheme = 'default';
 
@@ -51,9 +36,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+    // this.userService.getUsers()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((users: any) => {
+    //     this.user = users.nick;
+    //     console.log(this.user);
+    //   });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -74,10 +62,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  changeTheme(themeName: string) {
-    this.themeService.changeTheme(themeName);
   }
 
   toggleSidebar(): boolean {
