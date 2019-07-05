@@ -44,12 +44,12 @@ const theme = {
 };
 
 export const DEFAULT_THEME = {
-  name: 'default',
+  name: 'dark',
   variables: {
     ...theme,
 
     temperature: {
-      arcFill: [ theme.primary, theme.primary, theme.primary, theme.primary, theme.primary ],
+      arcFill: [theme.primary, theme.primary, theme.primary, theme.primary, theme.primary],
       arcEmpty: theme.bg2,
       thumbBg: theme.bg2,
       thumbBorder: theme.primary,
